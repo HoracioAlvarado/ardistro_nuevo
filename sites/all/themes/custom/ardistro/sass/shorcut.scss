@@ -1,0 +1,94 @@
+
+/*shotcuts*/
+.shortcuts-section {
+	margin: 15px 0;
+	background: red
+}
+
+.shorcut-font-style {
+	text-transform: uppercase;
+	color: grey;
+	//font-size: 1.25em;
+}
+
+
+.pane-shortcut {
+	@extend .shorcut-font-style;
+	a {
+		@extend .shorcut-font-style;
+	}
+}
+.arg-shortcut { margin-bottom: 15px;}
+.shortcut {
+	color: #FFF;
+	margin: 0 auto;
+	width: auto;
+	height: 100px;
+	border-radius: 0;
+	display: block;
+	text-align: center;
+
+}
+
+.shortcut .glyphicon {
+	top: 28%;
+}
+.shortcut-base {
+	color: $color-segundario;
+}
+.shortcut-uno {
+	color: $color-1;
+}
+
+.shortcut-dos {
+	color: $color-2;
+}
+
+.shortcut-tres {
+	color: $color-3;
+}
+
+.shortcut-cuatro {
+	color: $color-4;
+}
+
+.shortcut-cinco {
+	color: $color-5;
+}
+
+.shortcut-seis {
+	color: $color-6;
+}
+
+.shortcut-siete {
+	background-color: #ddd;
+}
+
+.shortcut-transparent {
+	background-color: transparent;
+}
+
+.shortcuts-section .glyphicon {
+	padding-top: 30%;
+	font-size: 48px;
+	padding-left: 28%;
+}
+
+.shortcuts-section p {
+	color: #888;
+}
+
+
+/**/
+
+.shorcut-icon {
+	border: 3px dotted #dedede;
+	@include rounded(10px);
+	padding: 10px;
+	font-size: 5em;
+	box-sizing: border-box;
+}
+.shortcut-title {
+	@extend .shorcut-font-style;
+	font-size: 1.25em
+}

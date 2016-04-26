@@ -1,0 +1,73 @@
+/*style ARDistro*/
+html {
+	background-color: #FFF;
+	height: 100%;
+}
+
+pre {
+	border: 0 none;
+	padding: 0;
+}
+
+/* Font Config */
+body,
+.label,
+.list-group,
+.list-group p,
+.list-group-item-text,
+.shortcut p,
+.alert-link p,
+blockquote p,
+.list-group blockquote p,
+.jumbotron p,
+.lead .list-group-item {
+	font-family: $font-family;
+}
+
+b,
+p strong,
+span strong,
+thead > tr > th,
+.progress-bar,
+label,
+dt,
+.h6,
+h6 {
+	font-family: "OpenSansBold", Helvetica, Arial, sans-serif;
+	font-weight: normal;
+}
+
+h4,
+.h4,
+h5,
+.h5,
+.panel-title,
+.btn,
+.input-xl,
+.navbar-brand {
+	font-family: 'Montserrat', sans-serif;
+	letter-spacing: -0.5px;
+	font-weight: 400;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+	letter-spacing: -0.5px;
+}
+
+a {
+	color: #666666;
+	text-decoration: none;
+}
+
+.btn {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+	letter-spacing: -0.5px;
+}

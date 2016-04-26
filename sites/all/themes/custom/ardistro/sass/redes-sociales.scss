@@ -1,0 +1,65 @@
+/* Footer Redes sociales */
+.mini-social,
+#block-menu-menu-redes-sociales ul.menu.nav {
+	margin: 0;
+	padding: 0;
+}
+
+.mini-social li,
+#block-menu-menu-redes-sociales ul.menu.nav li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+.mini-social a,
+#block-menu-menu-redes-sociales ul.menu.nav li a {
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-size: contain;
+	text-indent: -9999px;
+}
+
+#block-menu-menu-redes-sociales ul.menu.nav li a.menu-redes-sociales-Facebook {
+	background-image: url(../img/social-fb.png);
+	background-image: url(../img/social-fb.svg), none;
+	background-size: cover;
+	background-color: transparent;
+}
+
+#block-menu-menu-redes-sociales ul.menu.nav li a.menu-redes-sociales-Twitter {
+	background-image: url(../img/social-tw.png);
+	background-image: url(../img/social-tw.svg), none;
+	background-size: cover;
+	background-color: transparent;
+}
+
+#block-menu-menu-redes-sociales ul.menu.nav li a.menu-redes-sociales-Google {
+	background-image: url(../img/social-gp.png);
+	background-image: url(../img/social-gp.svg), none;
+	background-size: cover;
+	background-color: transparent;
+}
+
+#block-menu-menu-redes-sociales ul.menu.nav li a.menu-redes-sociales-Youtube {
+	background-image: url(../img/social-yt.png);
+	background-image: url(../img/social-yt.svg), none;
+	background-size: cover;
+	background-color: transparent;
+}
+
+#block-menu-menu-redes-sociales ul.menu.nav li a.menu-redes-sociales-Flickr {
+	background-image: url(../img/social-fl.png);
+	background-image: url(../img/social-fl.svg), none;
+	background-size: cover;
+	background-color: transparent;
+}
+
+#block-menu-menu-redes-sociales ul.menu.nav li a.menu-redes-sociales-RSS {
+	background-image: url(../img/social-rss.png);
+	background-image: url(../img/social-rss.svg), none;
+	background-size: cover;
+	background-color: transparent;
+}

@@ -1,0 +1,27 @@
+@import 'config';
+@import 'funciones';
+
+// Menu principal
+
+/*nav menu*/
+.navbar-default {
+	background-color: $color-1;
+	position: initial;
+
+
+
+	a { color: #fff }
+	.menu {
+		background-color: $color-1;
+	}
+
+	.nav {
+		padding-bottom: 0
+	}
+
+	.nav > li > a {
+		border-radius: 0;
+		background-color: $color-1;
+		color: #fff;
+	}
+}

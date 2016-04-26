@@ -1,0 +1,34 @@
+/* Imagen destacada Home */
+.imagen-destacada {
+	box-sizing: border-box;
+	background: darken($color-principal, 15%);
+	background:#005d76;
+	@include rounded(6px);
+	overflow: hidden;
+
+	.img-container {
+		height: 400px;
+		overflow: hidden;
+	}
+
+	.descripcion {
+		padding: 15px;
+		background: transparent;
+		color: #fff;
+		h1 { font-size: 1.5em; margin-bottom: 1em; font-weight: 600; text-transform: uppercase}
+		p { font-size: 1.1em}
+	}
+
+}
+
+
+@media (max-width:768px) {
+
+.imagen-destacada {
+
+	.img-container {
+		height: auto;
+	}
+
+}
+}

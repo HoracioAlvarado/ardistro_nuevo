@@ -1,0 +1,35 @@
+#badistro-carousel {
+	margin-top: 0;
+	.carousel-caption {
+		text-align: left;
+		right: 0; /* right: 20%; */
+		padding-bottom: 0;
+		// background: rgba(0, 0, 0, .5);
+		background: darken($color-principal, 15%);
+		height: 100%;
+		width: 30%;
+		bottom: 0;
+		padding: 15px;
+		left: initial;
+		right: 0;
+
+		> h3,
+		> p {
+			text-shadow: none
+		}
+
+		> h3 {
+			color: white;
+		}
+
+		> p {
+			font-size:1.1em;
+		}
+
+	}
+
+	.img-thumbnail {
+		padding: 0
+	}
+
+}
