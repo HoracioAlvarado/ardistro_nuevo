@@ -1606,7 +1606,12 @@ pre code {
   .container {
     width: 1170px;
   }
+
+  .navbar.container {
+    max-width: 1170px
+  }
 }
+
 .container-fluid {
   margin-right: auto;
   margin-left: auto;

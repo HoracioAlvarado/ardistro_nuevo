@@ -24,7 +24,7 @@ regions[page_bottom]    = 'Page bottom'
 ;; Stylesheets
 ;;;;;;;;;;;;;;;;;;;;;
 
-stylesheets[all][] = 'css/style.css'
+;stylesheets[all][] = 'css/style.css'
 stylesheets[all][] = 'css/bootstrapFlaty.css'
 stylesheets[all][] = 'css/bootswatchFlaty.css'
 stylesheets[all][] = 'css/user.css'

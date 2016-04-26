@@ -178,8 +178,6 @@ function ardistro_bloques_listado_render($subtype, $conf, $panel_args, $context 
   $view->set_items_per_page($conf["cantidad_links"]);
   $view->execute();
   foreach ($view->result as $key => $item) {
-    //echo $conf["formato_de_listado"] . '_' . $conf["orientacion_de_listado"];
-
     $links[] = crearLink($item, $conf["formato_de_listado"] . '_' . $conf["orientacion_de_listado"], $conf);
   }
 
