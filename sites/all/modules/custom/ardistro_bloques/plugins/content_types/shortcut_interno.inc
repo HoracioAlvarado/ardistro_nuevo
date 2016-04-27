@@ -163,7 +163,7 @@ function ardistro_bloques_shortcut_interno_render($subtype, $conf, $panel_args, 
   $block->title = '';
   $block->content = !empty($conf['link']) ? l(
     theme(
-      'ardistro_bloques_interno_shortcut',
+      'ardistro_bloques_shortcut_interno',
       array(
         'color' => $conf['color_fondo'],
         'icono' => $conf['icono'],
@@ -184,7 +184,7 @@ function ardistro_bloques_shortcut_interno_render($subtype, $conf, $panel_args, 
       ),
     )
   ) : theme(
-      'ardistro_bloques_interno_shortcut',
+      'ardistro_bloques_shortcut_interno',
       array(
         'color' => $conf['color_fondo'],
         'icono' => $conf['icono'],
