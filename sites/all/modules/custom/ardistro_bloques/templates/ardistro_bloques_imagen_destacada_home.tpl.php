@@ -5,9 +5,7 @@
 		<?php endif; ?>
 		<div class="col-md-8 nopadding">
 			<div class="img-container">
-				<img src="<?php print $imagen; ?>"
-				class="img-responsive"
-				alt="<?php print $alt; ?>" />
+				<?php print $imagen ?>
 			</div>
 		</div>
 		<div class="col-md-4 nopadding">

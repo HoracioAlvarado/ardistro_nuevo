@@ -205,7 +205,7 @@ function crearLink($item, $theme, $conf = NULL){
   $link->imagen = field_get_items('node', $item->_field_data["nid"]["entity"], 'field_featured_image', NULL);
   $link->imagen = theme_image_style(
     array(
-      'style_name' => 'thumb_noticia',
+      'style_name' => 'articulo_thumbnail',
       'path' => $link->imagen[0]["uri"],
       'width' => '',
       'height' => '',

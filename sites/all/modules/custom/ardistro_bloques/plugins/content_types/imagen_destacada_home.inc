@@ -117,9 +117,15 @@ function ardistro_bloques_imagen_destacada_home_render(
     $subtype, $conf, $panel_args, $context = NULL
 ) { 
 
-    $img = entity_load('file', array($conf["imagen"]), array());
-    $img = file_create_url($img[$conf["imagen"]]->uri);
-
+    $img = entity_load_single('file', $conf["imagen"]);
+    $rendered_image = theme('image_style', 
+        array(
+            'path' => $img->uri,
+            'style_name' => 'imagen_destacada_home',
+            'alt' => $img->alt,
+            'title' => $img->title,
+            )
+        );
     $block = new stdClass();
     $block->title = '';
 
@@ -128,8 +134,7 @@ function ardistro_bloques_imagen_destacada_home_render(
         array(
             'titulo' => $conf['titulo'],
             'bajada' => $conf['bajada'],
-            'alt' => $conf['alt'],
-            'imagen' => $img,
+            'imagen' => $rendered_image,
             'link' => $conf['link'],
             'tipo_de_link' => $conf["tipo_de_link"]
         )
