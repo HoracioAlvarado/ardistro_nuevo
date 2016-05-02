@@ -57,10 +57,11 @@ footer .links-rel li:nth-child(1) {
 	.logo-pais-digital,
 	.logo-ministerio-modernizacion {
 		display: block;
+
 		img {
 			height: 60px;
-		
 		}
+
 	}
 
 	.logo-ministerio-modernizacion {
@@ -69,7 +70,7 @@ footer .links-rel li:nth-child(1) {
 
 }
 
-@media (max-width:768px) {
+@media (min-width:768px) and (max-width:992px) {
 
 	/* Pie institucional */
 	.footer-institucional {
@@ -88,7 +89,7 @@ footer .links-rel li:nth-child(1) {
 }
 
 /* Pie de municipio */
-.view-content {
+.footer-municipio {
 	.logo-municipio,
 	.info-municipio {
 		border-right: 1px solid #ddd
@@ -97,20 +98,15 @@ footer .links-rel li:nth-child(1) {
 	.logo-municipio,
 	.info-municipio,
 	.telefono_municipio {
-		float: left;
-		width: 100 / 3 * 1%;
-		padding: 5px 30px;
-		box-sizing: border-box;
+		min-height: 90px;
+		padding-top: 15px;
+		padding-bottom: 15px;
 
-		.span {
-			display: block
-		}
-
-		.img-thumbnail {
+		img {
+			background: grey;
 			border: none;
 			padding: 0;
 			max-height: 60px;
-			width: auto;
 		}
 
 	}
@@ -120,7 +116,7 @@ footer .links-rel li:nth-child(1) {
 	}
 
 	.info-municipio {
-		font-size: 110%;
+		font-size: 90%;
 		text-align: center
 	}
 
@@ -129,100 +125,13 @@ footer .links-rel li:nth-child(1) {
 
 }
 
-@media (max-width:768px) {
-
-	/* Pie de municipio */
-	.view-content {
-		.logo-municipio,
-		.info-municipio {
-			border-right: none
-		}
-
-		.logo-municipio,
-		.info-municipio,
-		.telefono_municipio {
-			float: none;
-			width: 100%;
-			padding: 5px 30px;
-			box-sizing: border-box;
-
-			.span {
-				display: block
-			}
-
-			.img-thumbnail {
-				border: none;
-				padding: 0;
-				max-height: 60px;
-				width: auto;
-			}
-
-		}
-
-		.logo-municipio {
-			text-align: center;
-			margin-bottom: 15px
-		}
-
-		.info-municipio {
-			font-size: 110%;
-			text-align: center;
-			margin-bottom: 15px;
-		}
-
-		.telefono_municipio {
-			text-align: center;
-			margin-bottom: 15px;
-		}
-
-	}
-
-}
-
 @media (min-width:768px) and (max-width:992px) {
-
-	/* Pie de municipio */
-	.view-content {
-		.logo-municipio,
-		.info-municipio {
-			border-right: none
-		}
-
+	.footer-municipio {
 		.logo-municipio,
 		.info-municipio,
 		.telefono_municipio {
-			float: none;
-			width: 100%;
-			padding: 5px 30px;
-			box-sizing: border-box;
-
-			.span {
-				display: block
-			}
-
-			.img-thumbnail {
-				border: none;
-				padding: 0;
-				max-height: 60px;
-				width: auto;
-			}
-
-		}
-
-		.logo-municipio {
 			text-align: center;
-			margin-bottom: 15px
-		}
-
-		.info-municipio {
-			font-size: 110%;
-			text-align: center;
-			margin-bottom: 15px;
-		}
-
-		.telefono_municipio {
-			text-align: center;
-			margin-bottom: 15px;
+			border: none;
 		}
 
 	}

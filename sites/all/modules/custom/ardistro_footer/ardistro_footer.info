@@ -1,0 +1,4 @@
+name = AR Distro Footer
+description = "Footer customizable"
+core = 7.x
+package = AR Distro

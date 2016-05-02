@@ -1,0 +1,28 @@
+/* Modificadores para las pastillas de noticias*/
+.u-thumbnail.thumbnail {
+	padding: 0;
+	@include rounded(0);
+	font-family: inherit;
+	border: none;
+
+	.img-thumbnail {
+		border: none;
+		padding: 0;
+		@include rounded(6px);
+	}
+
+}
+@media (max-width: 992px) {
+		.thumbnail > img,
+	.thumbnail a > img {
+		width: 100%
+	}
+
+}
+@media (max-width:768px) {
+	.thumbnail > img,
+	.thumbnail a > img {
+		width: 100%
+	}
+
+}

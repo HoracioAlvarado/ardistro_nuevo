@@ -1,0 +1,23 @@
+
+/* remueve los paddings horizontales */
+.nopadding {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+.btn {
+	font-family: inherit
+}
+
+.bg-grey {
+	background-color: #fff
+}
+
+/**/
+.main-container {
+	&.container-fluid {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+}

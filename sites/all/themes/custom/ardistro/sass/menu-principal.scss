@@ -1,27 +1,112 @@
-@import 'config';
-@import 'funciones';
+.logo.navbar-btn {
+	padding: 15px 0
+}
 
-// Menu principal
+.mm-box {
+	background-color: $color-principal;
+	font-size: 1.5em;
+	padding-left: 10px;
+	line-height: 1.6;
+	color: #fff;
+	@include rounded(4px);
+}
 
-/*nav menu*/
+.navbar-collapse {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.region {
+	&.region-navigation {
+		position: absolute;
+		right: 15px;
+		top: 20px;
+	}
+
+}
+
+/* NAVBAR modificado */
+.navbar {
+	background: transparent;
+	margin-bottom: 5px;
+}
+
+.navbar-header {
+	float: none;
+}
+
 .navbar-default {
-	background-color: $color-1;
-	position: initial;
+	.navbar-nav {
+		width: 100%;
+		padding: 0 15px;
+		background: $color-principal;
+		@include rounded(6px);
 
+		li a {
+			padding-top: 10px;
+			padding-bottom: 10px;
+			text-transform: uppercase;
 
+			&:hover {
+				background: darken($color-principal, 5%);
+				color: #fff;
+				@include transition(.07s);
+			}
 
-	a { color: #fff }
-	.menu {
-		background-color: $color-1;
+		}
+
+		.dropdown-menu > li > a {
+			padding: 3px 15px !important;
+		}
+
+		& > .active {
+			background-color: blue;
+
+			& > a {
+				background: lighten($color-principal, 2%);
+
+				&:hover {
+					background: darken($color-principal, 5%);
+				}
+
+				&:focus {
+					background: darken($color-principal, 5%);
+				}
+
+			}
+
+		}
+
 	}
 
-	.nav {
-		padding-bottom: 0
+}
+
+.navbar-toggle {
+	@include rounded(0px);
+	background: $color-principal;
+	border-color: darken($color-principal, 1%);
+}
+
+@media (max-width:768px) {
+	#block-widgets-s-socialmedia-profile-default {
+		display: none
 	}
 
-	.nav > li > a {
-		border-radius: 0;
-		background-color: $color-1;
-		color: #fff;
+	.navbar-default {
+		padding: 15px;
+		margin: 0;
 	}
+
+	.navbar-collapse {
+		margin-left: 0 !important;
+		padding-left: 15px;
+	}
+
+}
+
+@media screen and (min-width:1200px) {
+	.navbar.container {
+		max-width: 1170px
+	}
+
 }

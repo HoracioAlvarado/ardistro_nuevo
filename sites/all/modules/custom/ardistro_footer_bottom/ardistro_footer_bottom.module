@@ -1,0 +1,179 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function ardistro_footer_bottom_block_info() {
+  $blocks = array();
+  $blocks['my_block_footer_bottom'] = array(
+    'info' => t('Bloque Customizable Para Footer Bottom'),
+  );
+  
+  return $blocks;
+}
+
+
+/**
+ *  hook_block_configuracion - Admin del block().
+ */
+function ardistro_footer_bottom_block_configure($delta='') {
+    $form= array();
+    if ($delta=='my_block_footer_bottom') {
+        $form['imagen_izquierda_bottom'] = array(
+            '#type'=>'managed_file',
+            '#title'=>t('Imagen Izquierda'),
+            '#size'=>40,
+            '#description'=>t('Cualquier archivo tipo .jpg, .png, .svg, .gif'),
+            '#upload_location'=>'public://',
+            '#default_value'=>variable_get('imagen_izquierda_bottom'),
+        );
+        
+        $form["alt_img_izquierda_bottom"] = array(
+            "#type" => "textfield",
+            "#title" => t("Alt Imagen Izquierda"),
+            "#default_value" => variable_get("alt_img_izquierda_bottom")
+        );
+
+        $form["link_img_izquierda_bottom"] = array(
+            "#type" => "textfield",
+            "#title" => t("Link Imagen Izquierda"),
+            "#default_value" => variable_get("link_img_izquierda_bottom")
+        );
+
+        $form["title_link_img_izquierda_bottom"] = array(
+            "#type" => "textfield",
+            "#title" => t("Title Link Imagen Izquierda"),
+            "#default_value" => variable_get("title_link_img_izquierda_bottom")
+        );               
+
+        $form['imagen_derecha_bottom'] = array(
+            '#type'=>'managed_file',
+            '#title'=>t('Imagen Derecha'),
+            '#size'=>40,
+            '#description'=>t('Cualquier archivo tipo .jpg, .png, .svg, .gif'),
+            '#upload_location'=>'public://',
+            '#default_value'=>variable_get('imagen_derecha_bottom'),
+        );
+
+        $form["alt_img_derecha_bottom"] = array(
+            "#type" => "textfield",
+            "#title" => t("Alt Imagen Derecha"),
+            "#default_value" => variable_get("alt_img_derecha_bottom")
+        );
+
+        $form["link_img_derecha_bottom"] = array(
+            "#type" => "textfield",
+            "#title" => t("Link Imagen Derecha"),
+            "#default_value" => variable_get("link_img_derecha_bottom")
+        );
+
+        $form["title_link_img_derecha_bottom"] = array(
+            "#type" => "textfield",
+            "#title" => t("Title Link Imagen Derecha"),
+            "#default_value" => variable_get("title_link_img_derecha_bottom")
+        );               
+
+
+    }
+
+    return $form;
+}
+
+
+/**
+ * hook_block_save - Salva el form en la DB.
+ */
+function ardistro_footer_bottom_block_save($delta = '', $edit = array()) {
+    if ($delta=='my_block_footer_bottom') {
+
+        //Guardo y subo al la imagen 1
+        variable_set('imagen_izquierda_bottom', $edit['imagen_izquierda_bottom']);
+        $file = file_load(variable_get('imagen_izquierda_bottom', $edit['imagen_izquierda_bottom']));
+
+        if (is_object($file)) {
+            $file->status=FILE_STATUS_PERMANENT;
+            file_save($file);
+                        
+            file_usage_add($file,'myblock','block',$file->fid);
+        }
+
+        //Guardo y subo la imagen 2
+        variable_set('imagen_derecha_bottom', $edit['imagen_derecha_bottom']);
+        $file2=file_load(variable_get('imagen_derecha_bottom', $edit['imagen_derecha_bottom']));
+
+        if (is_object($file2)) {
+            $file2->status=FILE_STATUS_PERMANENT;
+            file_save($file2);
+            
+            file_usage_add($file2,'myblock','block',$file2->fid);
+        }
+ 
+        variable_set('alt_img_izquierda_bottom', $edit['alt_img_izquierda_bottom']);
+        variable_set('alt_img_derecha_bottom', $edit['alt_img_derecha_bottom']);
+        variable_set("link_img_izquierda_bottom", $edit["link_img_izquierda_bottom"]);
+        variable_set("title_link_img_izquierda_bottom", $edit["title_link_img_izquierda_bottom"]);
+        variable_set("link_img_derecha_bottom", $edit["link_img_derecha_bottom"]);
+        variable_set("title_link_img_derecha_bottom", $edit["title_link_img_derecha_bottom"]);
+
+    }
+}
+
+/*
+* Hook_view - Devuelve al tpl del core, el html a incrustar
+*/
+function ardistro_footer_bottom_block_view($delta='') {
+    $block = array();
+    switch($delta) {
+        case 'my_block_footer_bottom' :
+            $block['content'] = _helper_footer_bottom_function();
+            break;
+    }
+    return $block;
+}
+
+   
+/**
+ * @return string
+ *   Helper para el html que se usa en el tpl del core
+ */
+function _helper_footer_bottom_function() {
+    $id = variable_get('imagen_izquierda_bottom');
+    $oImg = entity_load('file', array($id, array()));
+    $srcImg = file_create_url($oImg[$id]->uri);
+
+    $id2 = variable_get('imagen_derecha_bottom');    
+    $oImg2 = entity_load('file', array($id2, array()));
+    $srcImg2 = file_create_url($oImg2[$id2]->uri);
+
+    $altImgIzquierda = variable_get("alt_img_izquierda_bottom");
+    $altImgDerecha = variable_get("alt_img_derecha_bottom");
+
+
+    $linkIzquierda = variable_get("link_img_izquierda_bottom");
+    $titleLinkIzquierda = variable_get("title_link_img_izquierda_bottom");
+    $linkDerecha = variable_get("link_img_derecha_bottom");
+    $titleLinkDerecha = variable_get("title_link_img_derecha_bottom");
+
+    $img = "<img src='".$srcImg."' alt='".$altImgIzquierda."' />";
+    $img2 = "<img src='".$srcImg2."' alt='".$altImgDerecha."' />";
+
+    if ($linkIzquierda != "") {
+        $img = "<a href='".$linkIzquierda."' title='".$titleLinkIzquierda."'>" . $img ."</a>";         
+    } 
+
+    if ($linkDerecha != "") {
+        $img2 = "<a href='".$linkDerecha."' title='".$titleLinkDerecha."'>" . $img2 ."</a>";         
+    } 
+    
+    return  '<div class="separator linea"><hr /></div>'
+            .'<div class="footer-organismo row">'
+            .'<div class="col-md-6 organismo-1">'
+            .$img
+            .'</div>'
+            .'<div class="col-md-6 organismo-2">'
+            .$img2
+            .'</div>'
+            .'</div>'
+            ;
+}
+
