@@ -1,0 +1,181 @@
+<?php
+/*
+    Hook menu
+*/
+function scss_menu() {
+    $items = array();
+
+    /*
+        Agrega el acceso al menu de configuracion
+    */
+    $items['admin/config/content/scss'] = array(
+        'title' => 'scss',
+        'description' => 'Configurar Estilos Basicos',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('scss_form_configuracion'),
+        'access arguments' => array('scss_settings'),
+        'file' => 'scss.module',
+    );
+
+    return $items;
+}
+function scss_settings_permission() {
+  return array(
+    'scss_settings' => array(
+      'title' => t('Access content for the Current Posts module'),
+    'restrict access' => true,
+    )
+  );
+}
+
+/*
+function scss_permission() {
+    return array(
+        'administer scss settings' => array(
+            'title' => t('Administer scss configurations'),
+            'restrict access' => true,
+        )
+    );
+}
+
+*/
+/**
+ * Define el formulario de opciones de configuración.
+ */
+function scss_form_configuracion() {      
+    /*
+        $color-principal:#03aaba;
+        $color-segundario:#fea003 ;
+        $font-family: "OpenSans", Helvetica, Arial, sans-serif;
+        $color-1:#23ccc7; // verde agua
+        $color-2:#dfbd42; // amarillo
+        $color-3:#e95728; // naranja
+        $color-4:#b077d8; // violeta
+        $color-5:#2775a3; // azul
+        $color-6:#039cdf; // celeste
+    */
+
+    $form['color-principal'] = array(
+        '#type' => 'jquery_colorpicker',
+        '#title' => t('Color Principal'),
+        '#default_value' => variable_get('color-principal', '#ff6600'),
+    );
+
+    $form['color-secundario'] = array(
+        '#type' => 'jquery_colorpicker',
+        '#title' => t('Color Secundario'),
+        '#default_value' => variable_get('color-secundario', 'red'),
+    );
+
+    $form['color-1'] = array(
+        '#type' => 'jquery_colorpicker',
+        '#title' => t('Color 1'),
+        '#default_value' => variable_get('color-1', 'green'),
+    );
+
+    $form['color-2'] = array(
+        '#type' => 'jquery_colorpicker',
+        '#title' => t('Color 2'),
+        '#default_value' => variable_get('color-2', null),
+    );
+
+    $form['color-3'] = array(
+        '#type' => 'jquery_colorpicker',
+        '#title' => t('Color 3'),
+        '#default_value' => variable_get('color-3', null),   
+    );
+
+    $form['color-4'] = array(
+        '#type' => 'jquery_colorpicker',
+        '#title' => t('Color 4'),
+        '#default_value' => variable_get('color-4', null),   
+    );
+
+    $form['color-5'] = array(
+        '#type' => 'jquery_colorpicker',
+        '#title' => t('Color 5'),
+        '#default_value' => variable_get('color-5', null),   
+    );
+
+    $form['color-6'] = array(
+        '#type' => 'jquery_colorpicker',
+        '#title' => t('Color 6  '),
+        '#default_value' => variable_get('color-6', null),   
+    );
+
+
+    $aFonts = array(
+        "Arial, Helvetica, sans-serif" => "Arial",
+        "'Arial Black', Gadget, sans-serif" => "Arial Black",
+        "'Arial Narrow', sans-serif" => "Arial Narrow",
+        "Century Gothic, sans-serif" => "Century Gothic",
+        "Copperplate / Copperplate Gothic Light, sans-serif" => "Copperplate Gothic Light",
+        "'Courier New', Courier, monospace" => "Courier New",
+        "Georgia, Serif" => "Georgia",
+        "Gill Sans / Gill Sans MT, sans-serif" => "Gill Sans",
+        "Impact, Charcoal, sans-serif" => "Impact",
+        "'Lucida Console', Monaco, monospace" => "Lucida Console",
+        "'Lucida Sans Unicode', 'Lucida Grande', sans-serif" => "Lucida Sans Unicode",
+        "'Palatino Linotype', 'Book Antiqua', Palatino, serif" => "Palatino Linotype",
+        "Tahoma, Geneva, sans-serif" => "Tahoma",
+        "'Times New Roman', Times, serif" => "Times New Roman",
+        "'Trebuchet MS', Helvetica, sans-serif" => "Trebuchet MS",
+        "Verdana, Geneva, sans-serif" => "Verdana"
+    );
+
+    $form["font"] = array(
+        '#title' => t('Fuente'),
+        '#type' => 'select',
+        '#required' => FALSE,
+        '#options' => $aFonts,
+        '#default_value' => variable_get('font', null),   
+    );
+
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => 'Guardar configuración',
+    );
+    $form['#submit'][] = 'scss_form_configuracion_submit';  
+
+
+  return $form;
+}
+
+
+function scss_form_configuracion_submit($form, $form_state) {
+
+    variable_set('color-principal', $form_state['values']['color-principal']);
+    variable_set('color-secundario', $form_state['values']['color-secundario']);
+    variable_set('color-1', $form_state['values']['color-1']);
+    variable_set('color-2', $form_state['values']['color-2']);
+    variable_set('color-3', $form_state['values']['color-3']);
+    variable_set('color-4', $form_state['values']['color-4']);
+    variable_set('color-5', $form_state['values']['color-5']);
+    variable_set('color-6', $form_state['values']['color-6']);
+    variable_set('font', $form_state['values']['font']);
+
+    _saveScssFile($form_state["values"]);
+
+
+    drupal_set_message("Se han guardado las opciones de configuración.");
+    
+}
+
+function _saveScssFile($values) {
+    $fp = fopen(dirname(__FILE__)."/estilos.scss", "w+");
+    fwrite($fp, "\$color-principal:#".$values["color-principal"].";\r\n");
+    fwrite($fp, "\$color-secundario:#".$values["color-secundario"].";\r\n");
+    fwrite($fp, "\$color-1:#".$values["color-1"].";\r\n");
+    fwrite($fp, "\$color-2:#".$values["color-2"].";\r\n");
+    fwrite($fp, "\$color-3:#".$values["color-3"].";\r\n");
+    fwrite($fp, "\$color-4:#".$values["color-4"].";\r\n");
+    fwrite($fp, "\$color-5:#".$values["color-5"].";\r\n");
+    fwrite($fp, "\$color-6:#".$values["color-6"].";\r\n");
+    fwrite($fp, "\$color-6:#".$values["color-6"].";\r\n");
+    fwrite($fp, "\$font-family:".$values["font"].";\r\n");
+
+    fclose($fp);
+
+}
+
+

@@ -3,29 +3,33 @@
 /**
  * Implements hook_block_info().
  */
-function ardistro_footer_block_info() {
+function ardistro_pie_municipio_block_info() {
   $blocks = array();
-  $blocks['my_block'] = array(
-    'info' => t('Bloque Customizable Para Footer'),
+  $blocks['pie_municipio'] = array(
+    'info' => t('Bloque customizable para el pie del municipio'),
   );
   
   return $blocks;
 }
 
 
+
 /**
  *  hook_block_configuracion - Admin del block().
  */
-function ardistro_footer_block_configure($delta='') {
+function ardistro_pie_municipio_block_configure($delta='') {
     $form= array();
-    if ($delta=='my_block') {
-        $form['my_image_block_image'] = array(
-            '#type'=>'managed_file',
+    if ($delta=='pie_municipio') {
+        $form['img_izquierda'] = array(
+            '#type'=>'media',
+            '#tree' => TRUE, // Required
+            '#required' => TRUE,
             '#title'=>t('Imagen Izquierda'),
             '#size'=>40,
             '#description'=>t('Cualquier archivo tipo .jpg, .png, .svg, .gif'),
-            '#upload_location'=>'public://',
-            '#default_value'=>variable_get('my_image_block_image'),
+            '#upload_location'=>'public://layout',
+            '#default_value' => variable_get("img_izquierda"),
+            '#theme' => 'media_widget'
         );
 
         $form["alt_img_izquierda"] = array(
@@ -42,13 +46,13 @@ function ardistro_footer_block_configure($delta='') {
         );
 
         
-        $form['my_image_block_image2'] = array(
+        $form['img_derecha'] = array(
             '#type'=>'managed_file',
             '#title'=>t('Imagen Derecha'),
             '#size'=>40,
             '#description'=>t('Cualquier archivo tipo .jpg, .png, .svg, .gif'),
             '#upload_location'=>'public://',
-            '#default_value'=>variable_get('my_image_block_image2'),
+            '#default_value'=>variable_get('img_derecha'),
         );        
 
         $form["alt_img_derecha"] = array(
@@ -65,30 +69,30 @@ function ardistro_footer_block_configure($delta='') {
 /**
  * hook_block_save - Salva el form en la DB.
  */
-function ardistro_footer_block_save($delta = '', $edit = array()) {
-    if ($delta=='my_block') {
+function ardistro_pie_municipio_block_save($delta = '', $edit = array()) {
+    if ($delta=='pie_municipio') {
 
         //Guardo y subo al la imagen 1
-        variable_set('my_image_block_image',$edit['my_image_block_image']);
-        $file=file_load(variable_get('my_image_block_image',$edit['my_image_block_image']));
+        variable_set('img_izquierda',$edit['img_izquierda']);
+        $file=file_load(variable_get('img_izquierda',$edit['img_izquierda']));
 
         if (is_object($file)) {
             $file->status=FILE_STATUS_PERMANENT;
             file_save($file);
             
             
-            file_usage_add($file,'myblock','block',$file->fid);
+            file_usage_add($file,'ardistro_pie_municipio','block',$file->fid);
         }
 
         //Guardo y subo la imagen 2
-        variable_set('my_image_block_image2',$edit['my_image_block_image2']);
-        $file2=file_load(variable_get('my_image_block_image2',$edit['my_image_block_image2']));
+        variable_set('img_derecha',$edit['img_derecha']);
+        $file2=file_load(variable_get('img_derecha',$edit['img_derecha']));
 
         if (is_object($file2)) {
             $file2->status=FILE_STATUS_PERMANENT;
             file_save($file2);
             
-            file_usage_add($file2,'myblock','block',$file2->fid);
+            file_usage_add($file2,'ardistro_pie_municipio','block',$file2->fid);
         }
  
         //Guardo el texto
@@ -102,10 +106,10 @@ function ardistro_footer_block_save($delta = '', $edit = array()) {
 /*
 * Hook_view - Devuelve al tpl del core, el html a incrustar
 */
-function ardistro_footer_block_view($delta='') {
+function ardistro_pie_municipio_block_view($delta='') {
     $block = array();
     switch($delta) {
-        case 'my_block' :
+        case 'pie_municipio' :
             $block['content'] = _my_custom_module_helper_function();
             break;
     }
@@ -118,12 +122,12 @@ function ardistro_footer_block_view($delta='') {
  *   Helper para el html que se usa en el tpl del core
  */
 function _my_custom_module_helper_function() {
-    // $id = variable_get('my_image_block_image');
+    // $id = variable_get('img_izquierda');
     // $oImg = entity_load('file', array($id, array()));
     // $srcImg = file_create_url($oImg[$id]->uri);
     // $altImgIzquierda = variable_get("alt_img_izquierda");
 
-    $img = entity_load_single('file', variable_get('my_image_block_image'));
+    $img = entity_load_single('file', variable_get('img_izquierda'));
     $img = !empty($img)? theme('image', 
         array(
             'path' => $img->uri,
@@ -132,12 +136,12 @@ function _my_custom_module_helper_function() {
             )
         ) : '';
 
-    // $id2 = variable_get('my_image_block_image2');    
+    // $id2 = variable_get('img_derecha');    
     // $oImg2 = entity_load('file', array($id2, array()));
     // $srcImg2 = file_create_url($oImg2[$id2]->uri);
     // $altImgDerecha = variable_get("alt_img_derecha");
     
-    $img2 = entity_load_single('file', variable_get('my_image_block_image2'));
+    $img2 = entity_load_single('file', variable_get('img_derecha'));
     $img2 = !empty($img2)? theme('image', 
         array(
             'path' => $img2->uri,

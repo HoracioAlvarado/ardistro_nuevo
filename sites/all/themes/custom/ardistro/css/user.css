@@ -171,9 +171,9 @@ footer .links-rel li:nth-child(1) {
   .footer-institucional .logo-ministerio-modernizacion img {
     height: 60px; }
 
-#badistro-carousel {
+#ardistro-carousel {
   margin-top: 0; }
-  #badistro-carousel .carousel-caption {
+  #ardistro-carousel .carousel-caption {
     text-align: left;
     right: 0;
     /* right: 20%; */
@@ -185,14 +185,14 @@ footer .links-rel li:nth-child(1) {
     padding: 15px;
     left: initial;
     right: 0; }
-    #badistro-carousel .carousel-caption > h3,
-    #badistro-carousel .carousel-caption > p {
+    #ardistro-carousel .carousel-caption > h3,
+    #ardistro-carousel .carousel-caption > p {
       text-shadow: none; }
-    #badistro-carousel .carousel-caption > h3 {
+    #ardistro-carousel .carousel-caption > h3 {
       color: white; }
-    #badistro-carousel .carousel-caption > p {
+    #ardistro-carousel .carousel-caption > p {
       font-size: 1.1em; }
-  #badistro-carousel .img-thumbnail {
+  #ardistro-carousel .img-thumbnail {
     padding: 0; }
 
 .separator-top {
