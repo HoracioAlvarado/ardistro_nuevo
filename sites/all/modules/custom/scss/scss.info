@@ -1,0 +1,6 @@
+name = Configuration Basic Styles
+description = "Configuration Basic Styles"
+core = 7.x
+package = Custom
+
+dependencies[] = jquery_colorpicker
