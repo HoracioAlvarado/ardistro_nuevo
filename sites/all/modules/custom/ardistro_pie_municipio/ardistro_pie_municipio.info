@@ -1,4 +1,4 @@
-name = AR Distro Pie Municipio
-description = "Pie Municipio"
+name = Pie Municipio
+description = "Bloque para obtener el Pie Municipio"
 core = 7.x
 package = AR Distro

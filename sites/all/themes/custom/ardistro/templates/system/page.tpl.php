@@ -225,28 +225,28 @@
   </div>
 </div>
 
-<footer class="footer <?php print $container_class; ?>">
   <?php if (!empty($page['footer'])): ?>
+<footer class="footer <?php print $container_class; ?>">
     <div class="footer-municipio" style="border-top:3px solid #ddd">
         <?php print render($page['footer']); ?>
     </div>
-  <?php endif; ?>
-<div class="footer-institucional">
+<!-- <div class="footer-institucional">
     <div class="row">
         <div class="col-md-6 col-sm-6" >
         <a href="https://www.facebook.com/paisdigitalar" class="logo-pais-digital" title="Ir al sitio web de País Digital">
         <img src="<?php global $base_url; print $base_url;?>/sites/all/themes/custom/ardistro/img/layout/logo-pais-digital.svg" alt="Logo País Digital" />
         </a>
         </div>
-        <!--  -->
+        
         <div class="col-md-6 col-sm-6">
         <a href="http://www.argentina.gob.ar/modernizacion" class="logo-ministerio-modernizacion" title="Ir al sitio web del Ministerio de Modernización">
         <img src="<?php global $base_url; print $base_url;?>/sites/all/themes/custom/ardistro/img/layout/logo-miinisterio-modernizacion.svg" alt="Ministerio de Modernización, Presidencia de la Nación" />
         </a>
         </div>
     </div>
-</div>
+</div> -->
 
 
 
 </footer>
+  <?php endif; ?>
