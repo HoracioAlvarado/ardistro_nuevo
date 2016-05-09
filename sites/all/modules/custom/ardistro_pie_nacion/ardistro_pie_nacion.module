@@ -3,10 +3,10 @@
 /**
  * Implements hook_block_info().
  */
-function ardistro_footer_bottom_block_info() {
+function ardistro_pie_nacion_block_info() {
   $blocks = array();
-  $blocks['my_block_footer_bottom'] = array(
-    'info' => t('Bloque Customizable Para Footer Bottom'),
+  $blocks['pie_nacion'] = array(
+    'info' => t('Pie institucional nación'),
   );
   
   return $blocks;
@@ -16,14 +16,14 @@ function ardistro_footer_bottom_block_info() {
 /**
  *  hook_block_configuracion - Admin del block().
  */
-function ardistro_footer_bottom_block_configure($delta='') {
+function ardistro_pie_nacion_block_configure($delta='') {
     $form= array();
-    if ($delta=='my_block_footer_bottom') {
+    if ($delta=='pie_nacion') {
         $form['imagen_izquierda_bottom'] = array(
             '#type'=>'managed_file',
             '#title'=>t('Imagen Izquierda'),
             '#size'=>40,
-            '#description'=>t('Cualquier archivo tipo .jpg, .png, .svg, .gif'),
+            '#description'=>t('Cualquier archivo tipo .jpg, .png, .gif'),
             '#upload_location'=>'public://',
             '#default_value'=>variable_get('imagen_izquierda_bottom'),
         );
@@ -50,7 +50,7 @@ function ardistro_footer_bottom_block_configure($delta='') {
             '#type'=>'managed_file',
             '#title'=>t('Imagen Derecha'),
             '#size'=>40,
-            '#description'=>t('Cualquier archivo tipo .jpg, .png, .svg, .gif'),
+            '#description'=>t('Cualquier archivo tipo .jpg, .png, .gif'),
             '#upload_location'=>'public://',
             '#default_value'=>variable_get('imagen_derecha_bottom'),
         );
@@ -83,8 +83,8 @@ function ardistro_footer_bottom_block_configure($delta='') {
 /**
  * hook_block_save - Salva el form en la DB.
  */
-function ardistro_footer_bottom_block_save($delta = '', $edit = array()) {
-    if ($delta=='my_block_footer_bottom') {
+function ardistro_pie_nacion_block_save($delta = '', $edit = array()) {
+    if ($delta=='pie_nacion') {
 
         //Guardo y subo al la imagen 1
         variable_set('imagen_izquierda_bottom', $edit['imagen_izquierda_bottom']);
@@ -94,7 +94,7 @@ function ardistro_footer_bottom_block_save($delta = '', $edit = array()) {
             $file->status=FILE_STATUS_PERMANENT;
             file_save($file);
                         
-            file_usage_add($file,'myblock','block',$file->fid);
+            file_usage_add($file,'ardistro_pie_nacion','block',$file->fid);
         }
 
         //Guardo y subo la imagen 2
@@ -105,7 +105,7 @@ function ardistro_footer_bottom_block_save($delta = '', $edit = array()) {
             $file2->status=FILE_STATUS_PERMANENT;
             file_save($file2);
             
-            file_usage_add($file2,'myblock','block',$file2->fid);
+            file_usage_add($file2,'ardistro_pie_nacion','block',$file2->fid);
         }
  
         variable_set('alt_img_izquierda_bottom', $edit['alt_img_izquierda_bottom']);
@@ -121,10 +121,10 @@ function ardistro_footer_bottom_block_save($delta = '', $edit = array()) {
 /*
 * Hook_view - Devuelve al tpl del core, el html a incrustar
 */
-function ardistro_footer_bottom_block_view($delta='') {
+function ardistro_pie_nacion_block_view($delta='') {
     $block = array();
     switch($delta) {
-        case 'my_block_footer_bottom' :
+        case 'pie_nacion' :
             $block['content'] = _helper_footer_bottom_function();
             break;
     }
@@ -138,11 +138,11 @@ function ardistro_footer_bottom_block_view($delta='') {
  */
 function _helper_footer_bottom_function() {
     $id = variable_get('imagen_izquierda_bottom');
-    $oImg = entity_load('file', array($id, array()));
+    $oImg = entity_load('file', array($id));
     $srcImg = file_create_url($oImg[$id]->uri);
 
     $id2 = variable_get('imagen_derecha_bottom');    
-    $oImg2 = entity_load('file', array($id2, array()));
+    $oImg2 = entity_load('file', array($id2));
     $srcImg2 = file_create_url($oImg2[$id2]->uri);
 
     $altImgIzquierda = variable_get("alt_img_izquierda_bottom");

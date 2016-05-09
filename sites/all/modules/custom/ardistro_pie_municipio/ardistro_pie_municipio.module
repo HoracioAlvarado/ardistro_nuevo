@@ -6,7 +6,7 @@
 function ardistro_pie_municipio_block_info() {
   $blocks = array();
   $blocks['pie_municipio'] = array(
-    'info' => t('Bloque customizable para el pie del municipio'),
+    'info' => t('Pie institucional municipio'),
   );
   
   return $blocks;
@@ -26,7 +26,7 @@ function ardistro_pie_municipio_block_configure($delta='') {
             '#required' => TRUE,
             '#title'=>t('Imagen Izquierda'),
             '#size'=>40,
-            '#description'=>t('Cualquier archivo tipo .jpg, .png, .svg, .gif'),
+            '#description'=>t('Cualquier archivo tipo .jpg, .png, .gif'),
             '#upload_location'=>'public://layout',
             '#default_value' => variable_get("img_izquierda"),
             '#theme' => 'media_widget'
@@ -50,7 +50,7 @@ function ardistro_pie_municipio_block_configure($delta='') {
             '#type'=>'managed_file',
             '#title'=>t('Imagen Derecha'),
             '#size'=>40,
-            '#description'=>t('Cualquier archivo tipo .jpg, .png, .svg, .gif'),
+            '#description'=>t('Cualquier archivo tipo .jpg, .png, .gif'),
             '#upload_location'=>'public://',
             '#default_value'=>variable_get('img_derecha'),
         );        

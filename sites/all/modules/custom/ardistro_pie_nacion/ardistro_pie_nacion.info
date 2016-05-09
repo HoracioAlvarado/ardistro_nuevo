@@ -1,0 +1,4 @@
+name = Pie Institucional Nacion
+description = "Bloque para obtener el pie Institucional con los logos de nación"
+core = 7.x
+package = AR Distro
